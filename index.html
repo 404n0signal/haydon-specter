@@ -6,6 +6,13 @@
 <title>Haydon Specter | Permanent Care Home Staffing</title>
 <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="13" fill="%2316335B"/><text x="30" y="45" text-anchor="middle" font-family="Georgia,serif" font-weight="600" font-size="38" fill="%23FBF6EE">H</text><circle cx="47" cy="44" r="3.4" fill="%23C56B4A"/></svg>'>
 <meta name="description" content="The care sector recruitment partner. Permanent ancillary and care staff, a pre-screened shortlist within 72 hours, a 90-day guarantee, and people who actually stay.">
+<link rel="canonical" href="https://www.haydonspecter.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.haydonspecter.com/">
+<meta property="og:site_name" content="Haydon Specter">
+<meta property="og:title" content="Haydon Specter | Permanent Care Home Staffing">
+<meta property="og:description" content="Permanent ancillary and care staff who join your payroll and stay. A pre-screened shortlist within 72 hours, backed by a 90-day guarantee.">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,400;9..144,1,500;9..144,1,600&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -283,9 +290,10 @@
   .quote-band::before { content: ""; position: absolute; top: -60px; right: -60px; width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(circle, rgba(197,107,74,0.22), transparent 70%); }
   .qb-inner { max-width: 820px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
   .qb-mark { font-family: var(--display); font-size: 4.5rem; color: var(--gold); line-height: 0.4; display: block; margin-bottom: 8px; }
-  .qb-text { font-family: var(--display); font-style: italic; font-weight: 500; font-size: clamp(1.4rem, 2.6vw, 1.9rem); line-height: 1.4; color: var(--cream); margin-bottom: 26px; }
+  .qb-text { font-family: var(--display); font-style: italic; font-weight: 500; font-size: clamp(1.08rem, 2vw, 1.35rem); line-height: 1.55; color: var(--cream); margin-bottom: 26px; text-align: left; }
+  .qb-text p { margin-bottom: 16px; }
+  .qb-text p:last-child { margin-bottom: 0; }
   .qb-who { font-size: 0.92rem; color: var(--gold); letter-spacing: 0.04em; }
-  .qb-pending { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(251,246,238,0.4); margin-top: 14px; }
 
   /* faq */
   .faq { background: var(--paper); }
@@ -320,7 +328,11 @@
   .reveal.in { opacity: 1; transform: none; }
 
   @media (max-width: 920px) {
-    .nav-links { display: none; }
+    .nav-links { display: none; position: absolute; top: 80px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--paper); padding: 8px 30px 26px; border-bottom: 1px solid var(--line); box-shadow: 0 28px 48px -30px rgba(22,51,91,0.28); }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 13px 0; font-size: 1rem; }
+    .nav-links a:not(.nav-cta)::after { display: none; }
+    .nav-links .nav-cta { margin-top: 12px; text-align: center; }
     .menu-btn { display: block; }
     .hero-grid, .about-grid, .diff-grid, .cta-grid, .terms-grid, .alongside-grid { grid-template-columns: 1fr; gap: 48px; }
     .al-cards { grid-template-columns: 1fr; }
@@ -368,7 +380,7 @@
         <a href="#candidates">For candidates</a>
         <a href="#contact" class="nav-cta">Get in Touch</a>
       </div>
-      <button class="menu-btn" onclick="document.querySelector('.nav-links').style.display='flex';this.style.display='none'">&#9776;</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">&#9776;</button>
     </nav>
   </div>
 </header>
@@ -605,9 +617,13 @@
   <div class="wrap">
     <div class="qb-inner reveal">
       <span class="qb-mark">&ldquo;</span>
-      <p class="qb-text">Placeholder for a real client quote. Something like: we went from full agency spend to zero in three months, and every carer they placed is still with us.</p>
-      <p class="qb-who">Registered Manager, care home client</p>
-      <p class="qb-pending">Real testimonial to be added</p>
+      <div class="qb-text">
+        <p>We were spending heavily on agency staff and needed a long term solution. At one stage, agency costs made up almost a quarter of our staffing budget.</p>
+        <p>What impressed us most was the honesty and transparency. We always knew exactly where things stood, communication was clear, and the quality of applicants was consistently high.</p>
+        <p>Within three months, we had reduced our agency usage to virtually zero. More importantly, the support staff they placed stayed. They fitted into our teams quickly, performed well, and helped bring much needed stability across our homes.</p>
+        <p>The difference has been significant. We now have a stronger, more reliable workforce and far less reliance on agency cover.</p>
+      </div>
+      <p class="qb-who">&mdash; Operations Manager, Care Home Group (North London)</p>
     </div>
   </div>
 </section>
@@ -670,7 +686,7 @@
             <div class="field"><label>CQC provider ID</label><input type="text" name="tcqc" placeholder="e.g. 1-234567890" required></div>
           </div>
           <div class="field"><label>Roughly how many beds / clients?</label><input type="text" name="tbeds" placeholder="e.g. 32-bed home" required></div>
-          <label class="declare"><input type="checkbox" name="tdeclare" id="tdeclare" required><span>I confirm I represent a care provider (not a recruitment agency or third party) and am enquiring about staffing my own service.</span></label>
+          <label class="declare"><input type="checkbox" name="tdeclare" id="tdeclare" required><span>I confirm I represent a care provider (not a recruitment agency or third party) and am enquiring on behalf of my own service.</span></label>
           <button type="submit">Request Terms</button>
           <p class="form-note">We review every request and send Terms within one working day. We do not share your details.</p>
         </form>
@@ -762,6 +778,16 @@
 <script>
   const header = document.getElementById('header');
   window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 20));
+  const navLinks = document.querySelector('.nav-links');
+  const menuBtn = document.getElementById('menuBtn');
+  function setMenu(open){
+    navLinks.classList.toggle('open', open);
+    menuBtn.innerHTML = open ? '&#10005;' : '&#9776;';
+    menuBtn.setAttribute('aria-expanded', open);
+    menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  menuBtn.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.12 });
