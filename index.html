@@ -21,6 +21,7 @@
     --navy: #16335B;
     --blue-mid: #1C4087;
     --terracotta: #C56B4A;
+    --terracotta-text: #A8532F;
     --terracotta-soft: #E8A98C;
     --gold: #C8A24B;
     --sand: #F4ECE0;
@@ -33,12 +34,13 @@
     --body: 'Archivo', system-ui, sans-serif;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-padding-top: 96px; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
   body { font-family: var(--body); color: var(--ink); background: var(--paper); line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
   .wrap { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
   img { display: block; max-width: 100%; }
 
-  header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,252,247,0.82); backdrop-filter: blur(16px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+  header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,252,247,0.82); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border-bottom: 1px solid transparent; transition: border-color .3s; }
   header.scrolled { border-bottom-color: var(--line); }
   nav { display: flex; align-items: center; justify-content: space-between; height: 80px; }
   .logo { display: flex; align-items: center; text-decoration: none; }
@@ -56,7 +58,7 @@
   /* HERO - asymmetric, photo-anchored */
   .hero { padding: 150px 0 90px; position: relative; background: radial-gradient(ellipse 80% 60% at 15% 0%, rgba(197,107,74,0.08), transparent 55%), var(--cream); }
   .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 60px; align-items: center; }
-  .eyebrow { display: inline-flex; align-items: center; gap: 9px; font-size: 0.77rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terracotta); font-weight: 600; margin-bottom: 26px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 9px; font-size: 0.77rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terracotta-text); font-weight: 600; margin-bottom: 26px; }
   .eyebrow::before { content: ""; width: 30px; height: 1.5px; background: var(--terracotta); }
   .hero h1 { font-family: var(--display); font-weight: 500; font-size: clamp(2.7rem, 5.4vw, 4.4rem); line-height: 1.02; letter-spacing: -0.02em; color: var(--navy); margin-bottom: 26px; }
   .hero h1 em { font-style: italic; color: var(--terracotta); position: relative; }
@@ -125,9 +127,9 @@
   .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; counter-reset: step; }
   .step { padding: 0 26px; position: relative; counter-increment: step; }
   .step:not(:last-child)::after { content: ""; position: absolute; top: 26px; right: -7px; width: 13px; height: 13px; border-top: 1.5px solid var(--terracotta); border-right: 1.5px solid var(--terracotta); transform: rotate(45deg); }
-  .step .n { width: 54px; height: 54px; border-radius: 50%; border: 1.5px solid var(--terracotta); display: flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 600; color: var(--terracotta); font-size: 1.15rem; margin-bottom: 22px; background: rgba(197,107,74,0.08); }
+  .step .n { width: 54px; height: 54px; border-radius: 50%; border: 1.5px solid var(--terracotta); display: flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 600; color: var(--terracotta-text); font-size: 1.15rem; margin-bottom: 22px; background: rgba(197,107,74,0.08); }
   .step .n::before { content: counter(step, decimal-leading-zero); }
-  .step h4 { font-family: var(--display); font-size: 1.2rem; color: var(--navy); margin-bottom: 9px; font-weight: 600; }
+  .step h3 { font-family: var(--display); font-size: 1.2rem; color: var(--navy); margin-bottom: 9px; font-weight: 600; }
   .step p { color: var(--muted); font-size: 0.95rem; }
 
   /* DIFFERENCE - quote over photo */
@@ -137,7 +139,7 @@
   .diff-list li { padding: 22px 0; border-bottom: 1px solid var(--line); display: flex; gap: 18px; }
   .diff-list li:last-child { border-bottom: none; }
   .diff-list .check { color: var(--terracotta); font-weight: 700; font-size: 1.2rem; line-height: 1.3; flex-shrink: 0; }
-  .diff-list h4 { font-family: var(--display); font-size: 1.12rem; color: var(--navy); margin-bottom: 4px; font-weight: 600; }
+  .diff-list h3 { font-family: var(--display); font-size: 1.12rem; color: var(--navy); margin-bottom: 4px; font-weight: 600; }
   .diff-list p { color: var(--muted); font-size: 0.95rem; }
   .diff-visual { position: relative; background: var(--navy); border-radius: 24px; padding: 52px 46px; overflow: hidden; box-shadow: 0 36px 70px -40px rgba(22,51,91,0.4); display: flex; align-items: center; min-height: 360px; }
   .diff-visual::before { content: ""; position: absolute; top: -50px; left: -50px; width: 180px; height: 180px; border: 1.5px solid rgba(197,107,74,0.35); border-radius: 50%; }
@@ -148,14 +150,6 @@
   .diff-quote .who { margin-top: 24px; font-size: 0.86rem; color: var(--gold); letter-spacing: 0.04em; }
 
   .fees { background: var(--paper); }
-  .fee-table { border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
-  .fee-row { display: grid; grid-template-columns: 1.4fr 1fr 1.5fr; padding: 26px 32px; border-bottom: 1px solid var(--line); align-items: center; }
-  .fee-row:last-child { border-bottom: none; }
-  .fee-row.head { background: var(--navy); color: var(--cream); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; }
-  .fee-row:not(.head):hover { background: var(--cream); }
-  .fee-row .role { font-family: var(--display); font-size: 1.14rem; color: var(--navy); font-weight: 600; }
-  .fee-row .price { font-weight: 600; color: var(--terracotta); }
-  .fee-row .note { color: var(--muted); font-size: 0.93rem; }
   .fee-foot { margin-top: 22px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
   .pill { background: var(--cream); border: 1px solid var(--line); padding: 8px 16px; border-radius: 30px; font-size: 0.85rem; color: var(--navy); font-weight: 600; }
 
@@ -166,12 +160,12 @@
   .vac-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
   .vac-card h3 { font-family: var(--display); font-size: 1.3rem; color: var(--navy); font-weight: 600; line-height: 1.2; }
   .vac-loc { font-size: 0.9rem; color: var(--muted); }
-  .vac-tag { font-size: 0.71rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: var(--terracotta); background: rgba(197,107,74,0.1); padding: 5px 12px; border-radius: 30px; white-space: nowrap; }
+  .vac-tag { font-size: 0.71rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: var(--terracotta-text); background: rgba(197,107,74,0.1); padding: 5px 12px; border-radius: 30px; white-space: nowrap; }
   .vac-meta { display: flex; gap: 18px; font-size: 0.92rem; color: var(--ink); }
   .vac-meta b { color: var(--navy); }
   .vac-card p.desc { color: var(--muted); font-size: 0.94rem; }
   .vac-apply { margin-top: auto; padding-top: 6px; }
-  .vac-apply a { color: var(--terracotta); font-weight: 600; text-decoration: none; font-size: 0.94rem; }
+  .vac-apply a { color: var(--terracotta-text); font-weight: 600; text-decoration: none; font-size: 0.94rem; }
   .vac-apply a:hover { color: var(--navy); }
   .vac-foot { text-align: center; margin-top: 36px; }
   .vac-foot p { color: var(--muted); font-size: 0.96rem; margin-bottom: 14px; }
@@ -192,14 +186,14 @@
   form { display: grid; gap: 15px; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
   .field label { display: block; font-size: 0.81rem; font-weight: 600; margin-bottom: 7px; color: rgba(251,246,238,0.85); }
-  .field input, .field select, .field textarea { width: 100%; padding: 14px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.05); color: var(--cream); font-family: var(--body); font-size: 0.95rem; transition: border-color .2s, background .2s; }
-  .field input::placeholder, .field textarea::placeholder { color: rgba(251,246,238,0.4); }
+  .field input, .field select, .field textarea { width: 100%; padding: 14px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.42); background: rgba(255,255,255,0.05); color: var(--cream); font-family: var(--body); font-size: 0.95rem; transition: border-color .2s, background .2s; }
+  .field input::placeholder, .field textarea::placeholder { color: rgba(251,246,238,0.62); }
   .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--gold); background: rgba(255,255,255,0.08); }
   .field select option { color: var(--ink); }
   .field textarea { resize: vertical; min-height: 90px; }
-  .file-field { border: 1px dashed rgba(255,255,255,0.28); border-radius: 10px; padding: 15px 16px; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: border-color .2s, background .2s; }
-  .file-field:hover { border-color: var(--gold); background: rgba(255,255,255,0.04); }
-  .file-field input { display: none; }
+  .file-field { position: relative; border: 1px dashed rgba(255,255,255,0.28); border-radius: 10px; padding: 15px 16px; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: border-color .2s, background .2s; }
+  .file-field:hover, .file-field:focus-within { border-color: var(--gold); background: rgba(255,255,255,0.04); }
+  .file-field input { position: absolute; width: 1px; height: 1px; clip-path: inset(50%); overflow: hidden; white-space: nowrap; }
   .file-field .fi-ico { color: var(--gold); font-size: 1.1rem; }
   .file-field .fi-txt { font-size: 0.9rem; color: rgba(251,246,238,0.7); }
   form button { background: var(--gold); color: var(--navy); border: none; padding: 16px; border-radius: 40px; font-family: var(--body); font-weight: 700; font-size: 0.98rem; cursor: pointer; transition: transform .2s, filter .2s; }
@@ -214,7 +208,7 @@
   .foot-social a { width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--navy); text-decoration: none; font-size: 0.8rem; font-weight: 600; transition: background .2s, color .2s, border-color .2s; }
   .foot-social a:hover { background: var(--navy); color: var(--cream); border-color: var(--navy); }
   .foot-cols { display: flex; gap: 56px; flex-wrap: wrap; }
-  .foot-col h5 { font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); margin-bottom: 14px; font-weight: 700; }
+  .foot-col h3 { font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); margin-bottom: 14px; font-weight: 700; }
   .foot-col a { display: block; color: var(--muted); text-decoration: none; font-size: 0.92rem; margin-bottom: 9px; transition: color .2s; }
   .foot-col a:hover { color: var(--terracotta); }
   .foot-bottom { border-top: 1px solid var(--line); padding-top: 22px; font-size: 0.83rem; color: var(--muted); }
@@ -272,8 +266,8 @@
   .tr-note { font-size: 0.9rem; color: var(--muted); font-style: italic; border-left: 2px solid var(--terracotta); padding-left: 16px; }
   .terms-req form { display: grid; gap: 15px; background: var(--navy); padding: 38px 36px; border-radius: 22px; box-shadow: 0 30px 64px -40px rgba(22,51,91,0.45); }
   .terms-req .field label { color: rgba(251,246,238,0.85); }
-  .terms-req .field input { width: 100%; padding: 14px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.05); color: var(--cream); font-family: var(--body); font-size: 0.95rem; transition: border-color .2s, background .2s; }
-  .terms-req .field input::placeholder { color: rgba(251,246,238,0.4); }
+  .terms-req .field input { width: 100%; padding: 14px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.42); background: rgba(255,255,255,0.05); color: var(--cream); font-family: var(--body); font-size: 0.95rem; transition: border-color .2s, background .2s; }
+  .terms-req .field input::placeholder { color: rgba(251,246,238,0.62); }
   .terms-req .field input:focus { outline: none; border-color: var(--gold); background: rgba(255,255,255,0.08); }
   .terms-req .err { display: none; font-size: 0.78rem; color: var(--terracotta-soft); margin-top: 6px; }
   .terms-req .err.show { display: block; }
@@ -321,14 +315,14 @@
   .al-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
   .al-card { background: var(--cream); border: 1px solid var(--line); border-radius: 16px; padding: 28px 26px; transition: transform .3s, box-shadow .3s; }
   .al-card:hover { transform: translateY(-4px); box-shadow: 0 22px 46px -32px rgba(22,51,91,0.3); }
-  .al-card h4 { font-family: var(--display); font-size: 1.18rem; color: var(--navy); font-weight: 600; margin-bottom: 9px; }
+  .al-card h3 { font-family: var(--display); font-size: 1.18rem; color: var(--navy); font-weight: 600; margin-bottom: 9px; }
   .al-card p { color: var(--muted); font-size: 0.94rem; line-height: 1.6; }
 
   .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
   .reveal.in { opacity: 1; transform: none; }
 
-  @media (max-width: 920px) {
-    .nav-links { display: none; position: absolute; top: 80px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--paper); padding: 8px 30px 26px; border-bottom: 1px solid var(--line); box-shadow: 0 28px 48px -30px rgba(22,51,91,0.28); }
+  @media (max-width: 1024px) {
+    .nav-links { display: none; position: absolute; top: 80px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--paper); padding: 8px 30px 26px; border-bottom: 1px solid var(--line); box-shadow: 0 28px 48px -30px rgba(22,51,91,0.28); max-height: calc(100dvh - 80px); overflow-y: auto; }
     .nav-links.open { display: flex; }
     .nav-links a { padding: 13px 0; font-size: 1rem; }
     .nav-links a:not(.nav-cta)::after { display: none; }
@@ -351,12 +345,12 @@
     .steps { grid-template-columns: 1fr 1fr; gap: 40px 0; }
     .step:nth-child(2)::after { display: none; }
     .vac-grid { grid-template-columns: 1fr; }
-    .fee-row { grid-template-columns: 1fr; gap: 6px; padding: 22px; }
-    .fee-row.head { display: none; }
     .form-row { grid-template-columns: 1fr; }
+    .field input, .field select, .field textarea, .terms-req .field input { font-size: 1rem; }
+    .maths-row > div[data-label]::before, .g-row > div[data-label]::before { content: attr(data-label); display: block; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; color: var(--muted); margin-bottom: 3px; }
+    .maths-row .hs[data-label]::before { color: var(--gold); }
     section { padding: 74px 0; }
     .hero { padding: 124px 0 80px; }
-    .hero-badge { left: 0; }
   }
   @media (max-width: 540px) {
     .results-grid { grid-template-columns: 1fr; }
@@ -385,6 +379,7 @@
   </div>
 </header>
 
+<main>
 <section class="hero" id="top">
   <div class="wrap">
     <div class="hero-grid">
@@ -478,10 +473,10 @@
           <p>The label matters because the behaviour is different.</p>
         </div>
         <ul class="diff-list">
-          <li><span class="check">&#10003;</span><div><h4>One fixed fee, once</h4><p>No retainer, no hourly markup, no ongoing charges. They join your payroll, not ours.</p></div></li>
-          <li><span class="check">&#10003;</span><div><h4>Shortlist within 72 hours</h4><p>A pre-screened shortlist in front of you within three working days of a full brief.</p></div></li>
-          <li><span class="check">&#10003;</span><div><h4>Built for retention</h4><p>We place people to stay, not temps to churn. Permanent, direct, lasting.</p></div></li>
-          <li><span class="check">&#10003;</span><div><h4>90-day guarantee</h4><p>If a placement does not work out within 90 days, we put it right.</p></div></li>
+          <li><span class="check">&#10003;</span><div><h3>One fixed fee, once</h3><p>No retainer, no hourly markup, no ongoing charges. They join your payroll, not ours.</p></div></li>
+          <li><span class="check">&#10003;</span><div><h3>Shortlist within 72 hours</h3><p>A pre-screened shortlist in front of you within 72 hours of a full brief.</p></div></li>
+          <li><span class="check">&#10003;</span><div><h3>Built for retention</h3><p>We place people to stay, not temps to churn. Permanent, direct, lasting.</p></div></li>
+          <li><span class="check">&#10003;</span><div><h3>90-day guarantee</h3><p>If a placement does not work out within 90 days, we put it right.</p></div></li>
         </ul>
       </div>
       <div class="diff-visual reveal">
@@ -504,10 +499,10 @@
     </div>
     <div class="maths-table reveal">
       <div class="maths-row head"><div></div><div>Agency temps</div><div class="hs">Haydon Specter</div></div>
-      <div class="maths-row"><div class="ml">Model</div><div>Per hour, per shift, ongoing</div><div class="hs">One-off fixed fee</div></div>
-      <div class="maths-row"><div class="ml">One carer, 12 months</div><div>&pound;37,000 &ndash; &pound;46,000</div><div class="hs">A fraction of that, once</div></div>
-      <div class="maths-row"><div class="ml">On your payroll?</div><div>No</div><div class="hs">Yes</div></div>
-      <div class="maths-row"><div class="ml">Retention</div><div>None</div><div class="hs">90-day guarantee</div></div>
+      <div class="maths-row"><div class="ml">Model</div><div data-label="Agency temps">Per hour, per shift, ongoing</div><div class="hs" data-label="Haydon Specter">One-off fixed fee</div></div>
+      <div class="maths-row"><div class="ml">One carer, 12 months</div><div data-label="Agency temps">&pound;37,000 &ndash; &pound;46,000</div><div class="hs" data-label="Haydon Specter">A fraction of that, once</div></div>
+      <div class="maths-row"><div class="ml">On your payroll?</div><div data-label="Agency temps">No</div><div class="hs" data-label="Haydon Specter">Yes</div></div>
+      <div class="maths-row"><div class="ml">Retention</div><div data-label="Agency temps">None</div><div class="hs" data-label="Haydon Specter">90-day guarantee</div></div>
     </div>
     <p class="maths-line reveal">&pound;37,000 a year on agency, or one fixed fee with us and they are still in post a year later. That is the whole pitch.</p>
     <div class="fee-foot reveal">
@@ -522,13 +517,13 @@
 
     <div class="guarantee reveal">
       <h3>Our guarantee</h3>
-      <p>If a placement does not work out within three months, you are covered. Refund or free replacement, your choice.</p>
+      <p>If a placement does not work out within 90 days, you are covered. Refund or free replacement, your choice.</p>
       <div class="g-table">
         <div class="g-row head"><div>If they leave</div><div>You get</div><div>Or</div></div>
-        <div class="g-row"><div>Within 2 weeks</div><div class="g-val">100% refund</div><div>Free replacement</div></div>
-        <div class="g-row"><div>Week 3 &ndash; Month 1</div><div class="g-val">75% refund</div><div>Free replacement</div></div>
-        <div class="g-row"><div>Month 2</div><div class="g-val">50% refund</div><div>Free replacement</div></div>
-        <div class="g-row"><div>Month 3</div><div class="g-val">25% refund</div><div>Free replacement</div></div>
+        <div class="g-row"><div>Within 2 weeks</div><div class="g-val" data-label="You get">100% refund</div><div data-label="Or">Free replacement</div></div>
+        <div class="g-row"><div>Week 3 &ndash; Month 1</div><div class="g-val" data-label="You get">75% refund</div><div data-label="Or">Free replacement</div></div>
+        <div class="g-row"><div>Month 2</div><div class="g-val" data-label="You get">50% refund</div><div data-label="Or">Free replacement</div></div>
+        <div class="g-row"><div>Month 3</div><div class="g-val" data-label="You get">25% refund</div><div data-label="Or">Free replacement</div></div>
       </div>
     </div>
   </div>
@@ -539,7 +534,7 @@
     <div class="proof-inner reveal">
       <span class="eyebrow">Proof, not promises</span>
       <h2>From full agency reliance to <em>zero.</em></h2>
-      <p class="proof-lead">Since January 2026, we have fully staffed care homes with zero agency dependency. We took a Shropshire home from full agency reliance to zero agencies in three months. Most recently, four permanent carers placed for a 32-bed home in Hampshire, all still in post.</p>
+      <p class="proof-lead">Established in 2020. Since January 2026, we have fully staffed care homes with zero agency dependency. We took a Shropshire home from full agency reliance to zero agencies in three months. Most recently, four permanent carers placed for a 32-bed home in Hampshire, all still in post.</p>
       <div class="proof-stats">
         <div><span class="ps-n">11</span><span class="ps-l">Homes fully staffed</span></div>
         <div><span class="ps-n">3 mo</span><span class="ps-l">Shropshire home to zero agencies</span></div>
@@ -559,19 +554,19 @@
       </div>
       <div class="al-cards reveal">
         <div class="al-card">
-          <h4>We take the overflow</h4>
+          <h3>We take the overflow</h3>
           <p>When your team is stretched or a role has sat open too long, we step in and fill it. No long contract, no taking over your function.</p>
         </div>
         <div class="al-card">
-          <h4>We cover the gaps</h4>
+          <h3>We cover the gaps</h3>
           <p>Kitchen, domestic, maintenance and care roles that are tough to source. We focus there so your recruiter can focus on the rest.</p>
         </div>
         <div class="al-card">
-          <h4>You stay in control</h4>
+          <h3>You stay in control</h3>
           <p>Your team, your process, your final say. We slot into how you already work and hand everything over clean.</p>
         </div>
         <div class="al-card">
-          <h4>Pay only on success</h4>
+          <h3>Pay only on success</h3>
           <p>No retainer eating your budget alongside an internal salary. One fixed fee, only when someone good actually starts.</p>
         </div>
       </div>
@@ -587,10 +582,10 @@
       <p>We place people into permanent care home roles that often never reach the public job boards. No temp churn, no being passed around. Here is how it works.</p>
     </div>
     <div class="steps reveal">
-      <div class="step"><span class="n"></span><h4>Initial chat</h4><p>A relaxed call to understand what you are after, your experience, and where you want to be.</p></div>
-      <div class="step"><span class="n"></span><h4>CV review</h4><p>We sharpen your CV and present you at your best to the right homes.</p></div>
-      <div class="step"><span class="n"></span><h4>Introductions</h4><p>We put you in front of the right homes and prep you properly for every interview.</p></div>
-      <div class="step"><span class="n"></span><h4>You start</h4><p>Contracts sorted, onboarding handled, and we stay in touch once you are in post.</p></div>
+      <div class="step"><span class="n"></span><h3>Initial chat</h3><p>A relaxed call to understand what you are after, your experience, and where you want to be.</p></div>
+      <div class="step"><span class="n"></span><h3>CV review</h3><p>We sharpen your CV and present you at your best to the right homes.</p></div>
+      <div class="step"><span class="n"></span><h3>Introductions</h3><p>We put you in front of the right homes and prep you properly for every interview.</p></div>
+      <div class="step"><span class="n"></span><h3>You start</h3><p>Contracts sorted, onboarding handled, and we stay in touch once you are in post.</p></div>
     </div>
 
     <div class="cand-roles reveal">
@@ -642,7 +637,7 @@
       </details>
       <details>
         <summary>How long is the guarantee?</summary>
-        <p>Three months. If a placement leaves within that window, you get a refund or a free replacement, your choice. The refund tapers from 100% in the first two weeks down to 25% in month three, and a free replacement is available at any stage.</p>
+        <p>90 days. If a placement leaves within that window, you get a refund or a free replacement, your choice. The refund tapers from 100% in the first two weeks down to 25% in month three, and a free replacement is available at any stage.</p>
       </details>
       <details>
         <summary>When is the fee payable?</summary>
@@ -672,22 +667,22 @@
       </div>
       <div class="reveal">
         <form id="termsForm">
-          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form-row">
-            <div class="field"><label>Your name</label><input type="text" name="tname" placeholder="Full name" required></div>
-            <div class="field"><label>Role</label><input type="text" name="trole" placeholder="e.g. Registered Manager" required></div>
+            <div class="field"><label for="tname">Your name</label><input type="text" name="tname" id="tname" placeholder="Full name" required></div>
+            <div class="field"><label for="trole">Role</label><input type="text" name="trole" id="trole" placeholder="e.g. Registered Manager" required></div>
           </div>
-          <div class="field"><label>Care home / company name</label><input type="text" name="tcompany" placeholder="Registered company name" required></div>
+          <div class="field"><label for="tcompany">Care home / company name</label><input type="text" name="tcompany" id="tcompany" placeholder="Registered company name" required></div>
           <div class="form-row">
-            <div class="field"><label>Work email</label><input type="email" name="temail" id="temail" placeholder="you@yourhome.co.uk" required><span class="err" id="emailErr">Please use your work email, not a personal address.</span></div>
-            <div class="field"><label>CQC provider ID</label><input type="text" name="tcqc" placeholder="e.g. 1-234567890" required></div>
+            <div class="field"><label for="temail">Work email</label><input type="email" name="temail" id="temail" placeholder="you@yourhome.co.uk" aria-describedby="emailErr" required><span class="err" id="emailErr" role="alert">This looks like a personal email address. We prioritise work emails &mdash; if this is the right address, press Request Terms again to continue.</span></div>
+            <div class="field"><label for="tcqc">CQC provider ID (optional)</label><input type="text" name="tcqc" id="tcqc" placeholder="e.g. 1-234567890"></div>
           </div>
-          <div class="field"><label>Roughly how many beds / clients?</label><input type="text" name="tbeds" placeholder="e.g. 32-bed home" required></div>
+          <div class="field"><label for="tbeds">Roughly how many beds / clients?</label><input type="text" name="tbeds" id="tbeds" placeholder="e.g. 32-bed home" required></div>
           <label class="declare"><input type="checkbox" name="tdeclare" id="tdeclare" required><span>I confirm I represent a care provider (not a recruitment agency or third party) and am enquiring on behalf of my own service.</span></label>
           <button type="submit">Request Terms</button>
           <p class="form-note">We review every request and send Terms within one working day. We do not share your details.</p>
         </form>
-        <div class="form-success" id="termsSuccess">Thanks, that is with us. We will review it and send our Terms across within one working day.</div>
+        <div class="form-success" id="termsSuccess" role="status" tabindex="-1">Thanks, that is with us. We will review it and send our Terms across within one working day.</div>
       </div>
     </div>
   </div>
@@ -708,37 +703,37 @@
       </div>
       <div class="reveal">
         <form id="briefForm">
-          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form-row">
-            <div class="field"><label>Name</label><input type="text" name="name" placeholder="Your name" required></div>
-            <div class="field"><label>Email</label><input type="email" name="email" placeholder="you@example.com" required></div>
+            <div class="field"><label for="bname">Name</label><input type="text" name="name" id="bname" placeholder="Your name" required></div>
+            <div class="field"><label for="bemail">Email</label><input type="email" name="email" id="bemail" placeholder="you@example.com" required></div>
           </div>
           <div class="form-row">
-            <div class="field"><label>Phone</label><input type="tel" name="phone" placeholder="Optional"></div>
-            <div class="field"><label>I am a</label>
-              <select name="type" onchange="document.getElementById('cvWrap').style.display = this.value==='candidate' ? 'block':'none'">
+            <div class="field"><label for="bphone">Phone</label><input type="tel" name="phone" id="bphone" placeholder="Optional"></div>
+            <div class="field"><label for="btype">I am a</label>
+              <select name="type" id="btype" onchange="typeChanged(this)">
                 <option value="provider">Care provider hiring</option>
                 <option value="candidate">Candidate looking for work</option>
               </select>
             </div>
           </div>
-          <div class="field"><label>Message</label><textarea name="message" placeholder="Role, location, rota, salary, or what you are looking for..." required></textarea></div>
+          <div class="field"><label for="bmessage">Message</label><textarea name="message" id="bmessage" placeholder="Role, location, rota, salary, or what you are looking for..." required></textarea></div>
           <div class="field" id="cvWrap" style="display:none">
-            <label>Attach your CV (optional)</label>
             <label class="file-field">
               <span class="fi-ico">&uarr;</span>
-              <span class="fi-txt" id="fileTxt">Upload CV or resume (PDF, DOC)</span>
-              <input type="file" name="cv" accept=".pdf,.doc,.docx" onchange="document.getElementById('fileTxt').textContent = this.files[0] ? this.files[0].name : 'Upload CV or resume (PDF, DOC)'">
+              <span class="fi-txt" id="fileTxt">Attach your CV &mdash; PDF or Word (optional)</span>
+              <input type="file" name="cv" accept=".pdf,.doc,.docx" onchange="document.getElementById('fileTxt').textContent = this.files[0] ? this.files[0].name : 'Attach your CV — PDF or Word (optional)'">
             </label>
           </div>
           <button type="submit">Send it over</button>
           <p class="form-note">By submitting you agree to our <a href="privacy-policy.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Privacy Policy</a> and <a href="terms-conditions.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Terms</a>. We respond within 24 hours.</p>
         </form>
-        <div class="form-success" id="successMsg">Thanks, that is in. We will be back to you within 24 hours.</div>
+        <div class="form-success" id="successMsg" role="status" tabindex="-1">Thanks, that is in. We will be back to you within 24 hours.</div>
       </div>
     </div>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="wrap">
@@ -754,13 +749,13 @@
         </div>
       </div>
       <div class="foot-cols">
-        <div class="foot-col"><h5>Company</h5><a href="#about">About</a><a href="#approach">How It Works</a><a href="#results">Results</a><a href="#fees">The Maths</a></div>
-        <div class="foot-col"><h5>Applicants</h5><a href="#candidates">The Process</a><a href="#candidates">Live Roles</a><a href="#contact">Send Your CV</a><a href="https://uk.indeed.com/cmp/Haydon-Specter/jobs" target="_blank" rel="noopener">Find a Job</a></div>
-        <div class="foot-col"><h5>Get in Touch</h5><a href="mailto:info@haydonspecter.com">info@haydonspecter.com</a><a href="tel:+447426986788">+44 7426 986788</a><a href="#contact">Brief a Role</a></div>
+        <div class="foot-col"><h3>Company</h3><a href="#about">About</a><a href="#approach">How It Works</a><a href="#results">Results</a><a href="#fees">The Maths</a></div>
+        <div class="foot-col"><h3>Applicants</h3><a href="#candidates">The Process</a><a href="#candidates">Live Roles</a><a href="#contact">Send Your CV</a><a href="https://uk.indeed.com/cmp/Haydon-Specter/jobs" target="_blank" rel="noopener">Find a Job</a></div>
+        <div class="foot-col"><h3>Get in Touch</h3><a href="mailto:info@haydonspecter.com">info@haydonspecter.com</a><a href="tel:+447426986788">+44 7426 986788</a><a href="#contact">Brief a Role</a></div>
       </div>
     </div>
     <div class="foot-bottom">
-      <p class="reg">Haydon Specter is a limited liability company registered in England and Wales, registered number 12546351. Registered office: 124 City Road, London, EC1V 2NX.</p>
+      <p class="reg">Haydon Specter Ltd is a private limited company registered in England and Wales, company number 12546351. Registered office: 124 City Road, London, EC1V 2NX.</p>
       <div class="row2">
         <span>&copy; 2026 Haydon Specter Ltd. All rights reserved.</span>
         <span><a href="privacy-policy.html">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="terms-conditions.html">Terms &amp; Conditions</a></span>
@@ -770,8 +765,17 @@
 </footer>
 
 <script>
+  const pageLoadedAt = Date.now();
   const header = document.getElementById('header');
   window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 20));
+  function typeChanged(sel){
+    var wrap = document.getElementById('cvWrap');
+    wrap.style.display = sel.value === 'candidate' ? 'block' : 'none';
+    if (sel.value !== 'candidate'){
+      var fi = wrap.querySelector('input[type="file"]');
+      if (fi){ fi.value = ''; document.getElementById('fileTxt').textContent = 'Attach your CV — PDF or Word (optional)'; }
+    }
+  }
   const navLinks = document.querySelector('.nav-links');
   const menuBtn = document.getElementById('menuBtn');
   function setMenu(open){
@@ -788,7 +792,7 @@
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   // Shared: collect a form (CV file as base64) and POST it as JSON to our API
   function buildPayload(form){
-    var data = { form: form.id === 'termsForm' ? 'terms' : 'brief' };
+    var data = { form: form.id === 'termsForm' ? 'terms' : 'brief', elapsedMs: Date.now() - pageLoadedAt };
     Array.prototype.forEach.call(form.elements, function(el){
       if (!el.name || el.type === 'file' || el.type === 'submit') return;
       data[el.name] = el.type === 'checkbox' ? el.checked : el.value;
@@ -796,6 +800,7 @@
     var fileInput = form.querySelector('input[type="file"]');
     var f = fileInput && fileInput.files[0];
     if (!f) return Promise.resolve(data);
+    if (!f.size) return Promise.reject(new Error('cv-empty'));
     if (f.size > 3 * 1024 * 1024) return Promise.reject(new Error('cv-too-large'));
     return new Promise(function(resolve, reject){
       var reader = new FileReader();
@@ -824,12 +829,16 @@
       if (data.success){
         form.style.display = 'none';
         successEl.style.display = 'block';
+        successEl.focus();
       } else {
-        fail();
+        fail(data.message);
       }
     })
     .catch(function(err){
-      fail(err && err.message === 'cv-too-large' ? 'That CV is over 3MB. Please attach a smaller file, or email it to info@haydonspecter.com.' : null);
+      var msg = null;
+      if (err && err.message === 'cv-too-large') msg = 'That CV is over 3MB. Please attach a smaller file, or email it to info@haydonspecter.com.';
+      if (err && err.message === 'cv-empty') msg = 'That CV file appears to be empty. Please re-attach it, or email it to info@haydonspecter.com.';
+      fail(msg);
     });
   }
 
@@ -838,16 +847,23 @@
     sendForm(this, document.getElementById('successMsg'), this.querySelector('button[type="submit"]'));
   });
 
-  // Gated Terms request: screen out free/personal email domains before sending
-  var freeDomains = ['gmail','yahoo','hotmail','outlook','live','icloud','aol','protonmail','proton','gmx','yandex','msn','mail'];
+  // Gated Terms request: advisory warning on free/personal email domains (submitting again proceeds)
+  var freeDomains = ['gmail.com','googlemail.com','yahoo.com','yahoo.co.uk','hotmail.com','hotmail.co.uk','outlook.com','live.com','live.co.uk','icloud.com','aol.com','protonmail.com','proton.me','gmx.com','gmx.co.uk','yandex.com','msn.com','mail.com'];
   document.getElementById('termsForm').addEventListener('submit', function(e){
     e.preventDefault();
     var emailEl = document.getElementById('temail');
     var err = document.getElementById('emailErr');
     var domain = (emailEl.value || '').toLowerCase().split('@')[1] || '';
-    var provider = domain.split('.')[0];
-    if (freeDomains.indexOf(provider) > -1) { err.classList.add('show'); emailEl.focus(); return; }
+    var isFree = freeDomains.some(function(d){ return domain === d || domain.slice(-(d.length + 1)) === '.' + d; });
+    if (isFree && this.dataset.warned !== domain) {
+      this.dataset.warned = domain;
+      err.classList.add('show');
+      emailEl.setAttribute('aria-invalid', 'true');
+      emailEl.focus();
+      return;
+    }
     err.classList.remove('show');
+    emailEl.removeAttribute('aria-invalid');
     sendForm(this, document.getElementById('termsSuccess'), this.querySelector('button[type="submit"]'));
   });
 </script>

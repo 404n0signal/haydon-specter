@@ -4,8 +4,10 @@
 
 const REQUIRED = {
   brief: ['name', 'email', 'message'],
-  terms: ['tname', 'trole', 'tcompany', 'temail', 'tcqc', 'tbeds'],
+  terms: ['tname', 'trole', 'tcompany', 'temail', 'tbeds'],
 };
+
+const ALLOWED_ORIGINS = ['https://www.haydonspecter.com', 'https://haydonspecter.com'];
 
 const LABELS = {
   brief: [['name', 'Name'], ['email', 'Email'], ['phone', 'Phone'], ['type', 'Enquirer type'], ['message', 'Message']],
@@ -67,6 +69,17 @@ module.exports = async function handler(req, res) {
   // Honeypot: bots fill the hidden checkbox — report success, send nothing
   if (body.botcheck) return res.status(200).json({ success: true });
 
+  // Cross-origin posts from other sites are rejected (no Origin header — e.g. curl — passes)
+  const origin = req.headers.origin;
+  if (origin && !ALLOWED_ORIGINS.includes(origin) && !/\.vercel\.app$/.test(new URL(origin).hostname)) {
+    return res.status(403).json({ success: false, message: 'Forbidden' });
+  }
+
+  // Minimum fill time: humans take longer than 2.5s from page load to submit
+  if (typeof body.elapsedMs !== 'number' || body.elapsedMs < 2500) {
+    return res.status(400).json({ success: false, message: 'Please take a moment to complete the form before sending.' });
+  }
+
   for (const f of REQUIRED[kind]) {
     if (!body[f] || !String(body[f]).trim()) {
       return res.status(400).json({ success: false, message: 'Missing required field: ' + f });
@@ -101,7 +114,7 @@ module.exports = async function handler(req, res) {
     html: renderEmail(kind, rows, enquirerName),
   };
 
-  if (kind === 'brief' && body.cv && body.cv.content) {
+  if (kind === 'brief' && body.type === 'candidate' && body.cv && body.cv.content) {
     const filename = String(body.cv.filename || 'cv').replace(/[^\w. -]/g, '_');
     if (!/\.(pdf|doc|docx)$/i.test(filename)) {
       return res.status(400).json({ success: false, message: 'CV must be a PDF or Word document' });
@@ -109,17 +122,31 @@ module.exports = async function handler(req, res) {
     if (String(body.cv.content).length > 4200000) {
       return res.status(400).json({ success: false, message: 'CV too large (3MB max)' });
     }
+    // Magic bytes must match the claimed type — the extension alone can lie
+    const head = Buffer.from(String(body.cv.content).slice(0, 12), 'base64');
+    const isPdf = head.subarray(0, 5).toString('latin1') === '%PDF-';
+    const isDocx = head[0] === 0x50 && head[1] === 0x4b && head[2] === 0x03 && head[3] === 0x04;
+    const isDoc = head[0] === 0xd0 && head[1] === 0xcf && head[2] === 0x11 && head[3] === 0xe0;
+    if (!isPdf && !isDocx && !isDoc) {
+      return res.status(400).json({ success: false, message: 'That file does not appear to be a valid PDF or Word document.' });
+    }
     email.attachments = [{ filename, content: body.cv.content }];
     const cvRow = `<tr><td style="padding:11px 16px 11px 0;color:#6B6358;font-size:12px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;vertical-align:top;white-space:nowrap;border-bottom:1px solid #E9DECF;">CV</td>` +
       `<td style="padding:11px 0;color:#2A2622;border-bottom:1px solid #E9DECF;">&#128206; Attached &mdash; ${esc(filename)}</td></tr>`;
     email.html = renderEmail(kind, rows + '\n' + cvRow, enquirerName);
   }
 
-  const r = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify(email),
-  });
+  let r;
+  try {
+    r = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify(email),
+    });
+  } catch (err) {
+    console.error('Resend fetch failed', err);
+    return res.status(502).json({ success: false, message: 'Email send failed' });
+  }
   if (!r.ok) {
     console.error('Resend error', r.status, await r.text());
     return res.status(502).json({ success: false, message: 'Email send failed' });
