@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haydon Specter | Permanent Care Home Staffing</title>
+<link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="13" fill="%2316335B"/><text x="30" y="45" text-anchor="middle" font-family="Georgia,serif" font-weight="600" font-size="38" fill="%23FBF6EE">H</text><circle cx="47" cy="44" r="3.4" fill="%23C56B4A"/></svg>'>
+<meta name="description" content="The care sector recruitment partner. Permanent ancillary and care staff, a pre-screened shortlist within 72 hours, a 90-day guarantee, and people who actually stay.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,400;9..144,1,500;9..144,1,600&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #16335B;
+    --blue-mid: #1C4087;
+    --terracotta: #C56B4A;
+    --terracotta-soft: #E8A98C;
+    --gold: #C8A24B;
+    --sand: #F4ECE0;
+    --cream: #FBF6EE;
+    --paper: #FFFCF7;
+    --ink: #2A2622;
+    --muted: #6B6358;
+    --line: #E9DECF;
+    --display: 'Fraunces', Georgia, serif;
+    --body: 'Archivo', system-ui, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--body); color: var(--ink); background: var(--paper); line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
+  img { display: block; max-width: 100%; }
+
+  header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,252,247,0.82); backdrop-filter: blur(16px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+  header.scrolled { border-bottom-color: var(--line); }
+  nav { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+  .logo { display: flex; align-items: center; text-decoration: none; }
+  .logo .txt { font-family: var(--display); font-weight: 600; font-size: 1.34rem; color: var(--navy); letter-spacing: -0.015em; }
+  .logo .txt b { color: var(--terracotta); font-weight: 600; }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a { text-decoration: none; color: var(--ink); font-size: 0.92rem; font-weight: 500; transition: color .2s; position: relative; }
+  .nav-links a:not(.nav-cta)::after { content: ""; position: absolute; left: 0; bottom: -4px; width: 0; height: 1.5px; background: var(--terracotta); transition: width .25s; }
+  .nav-links a:not(.nav-cta):hover::after { width: 100%; }
+  .nav-links a:hover { color: var(--terracotta); }
+  .nav-cta { background: var(--navy); color: var(--cream) !important; padding: 11px 22px; border-radius: 40px; font-size: 0.88rem; transition: background .25s; }
+  .nav-cta:hover { background: var(--terracotta); }
+  .menu-btn { display: none; background: none; border: none; font-size: 1.5rem; color: var(--navy); cursor: pointer; }
+
+  /* HERO - asymmetric, photo-anchored */
+  .hero { padding: 150px 0 90px; position: relative; background: radial-gradient(ellipse 80% 60% at 15% 0%, rgba(197,107,74,0.08), transparent 55%), var(--cream); }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 60px; align-items: center; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 9px; font-size: 0.77rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terracotta); font-weight: 600; margin-bottom: 26px; }
+  .eyebrow::before { content: ""; width: 30px; height: 1.5px; background: var(--terracotta); }
+  .hero h1 { font-family: var(--display); font-weight: 500; font-size: clamp(2.7rem, 5.4vw, 4.4rem); line-height: 1.02; letter-spacing: -0.02em; color: var(--navy); margin-bottom: 26px; }
+  .hero h1 em { font-style: italic; color: var(--terracotta); position: relative; }
+  .hero h1 em::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0.08em; height: 0.09em; background: var(--gold); opacity: 0.55; border-radius: 2px; }
+  .hero p.lead { font-size: 1.18rem; color: var(--muted); max-width: 480px; margin-bottom: 36px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary { background: var(--navy); color: var(--cream); padding: 16px 32px; border-radius: 40px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: transform .2s, background .25s; display: inline-block; }
+  .btn-primary:hover { background: var(--terracotta); transform: translateY(-2px); }
+  .btn-ghost { color: var(--navy); padding: 16px 28px; border: 1.5px solid var(--line); border-radius: 40px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: border-color .25s, background .25s; }
+  .btn-ghost:hover { border-color: var(--navy); background: var(--paper); }
+  .hero-visual { position: relative; }
+  .hero-panel { background: var(--navy); color: var(--cream); border-radius: 24px; padding: 46px 44px; position: relative; overflow: hidden; box-shadow: 0 40px 80px -42px rgba(22,51,91,0.5); }
+  .hero-panel::after { content: ""; position: absolute; bottom: -70px; right: -70px; width: 220px; height: 220px; border-radius: 50%; background: radial-gradient(circle, rgba(197,107,74,0.4), transparent 70%); }
+  .hp-kicker { font-size: 0.76rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 26px; position: relative; z-index: 1; }
+  .hp-stat { display: flex; align-items: baseline; gap: 16px; margin-bottom: 20px; position: relative; z-index: 1; }
+  .hp-n { font-family: var(--display); font-size: 2.5rem; font-weight: 600; color: var(--gold); line-height: 1; min-width: 118px; }
+  .hp-l { font-size: 0.95rem; color: rgba(251,246,238,0.82); }
+  .hp-rule { height: 1px; background: rgba(255,255,255,0.14); margin: 26px 0 22px; position: relative; z-index: 1; }
+  .hp-foot { font-family: var(--display); font-style: italic; font-size: 1.12rem; color: rgba(251,246,238,0.92); position: relative; z-index: 1; line-height: 1.4; }
+
+  .trust { padding: 36px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--paper); }
+  .trust-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
+  .trust p { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .trust-items { display: flex; gap: 38px; flex-wrap: wrap; }
+  .trust-items span { font-family: var(--display); font-size: 1.04rem; color: var(--navy); font-weight: 500; }
+
+  section { padding: 104px 0; }
+  .sec-head { max-width: 680px; margin-bottom: 56px; }
+  .sec-head .eyebrow { margin-bottom: 18px; }
+  .sec-head h2 { font-family: var(--display); font-weight: 500; font-size: clamp(2.1rem, 4vw, 3rem); line-height: 1.08; letter-spacing: -0.02em; color: var(--navy); margin-bottom: 16px; }
+  .sec-head p { font-size: 1.08rem; color: var(--muted); }
+
+  /* ABOUT - photo + text */
+  .about { background: var(--paper); }
+  .about-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 60px; align-items: start; }
+  .about-body .eyebrow { margin-bottom: 18px; }
+  .about-body h2 { font-family: var(--display); font-weight: 500; font-size: clamp(1.9rem, 3.4vw, 2.6rem); line-height: 1.14; color: var(--navy); letter-spacing: -0.01em; margin-bottom: 22px; }
+  .about-body h2 em { font-style: italic; color: var(--terracotta); }
+  .about-body p { color: var(--muted); font-size: 1.05rem; margin-bottom: 18px; }
+  .about-body p:last-child { margin-bottom: 0; }
+  .about-body strong { color: var(--ink); font-weight: 600; }
+
+  .approach { background: var(--cream); }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .card { background: var(--paper); border: 1px solid var(--line); border-radius: 20px; padding: 38px 32px; transition: transform .3s, box-shadow .3s; }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 28px 56px -34px rgba(22,51,91,0.34); }
+  .card .ico { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, var(--terracotta-soft), var(--sand)); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; font-family: var(--display); font-size: 1.3rem; font-weight: 600; color: var(--navy); }
+  .card h3 { font-family: var(--display); font-weight: 600; font-size: 1.3rem; color: var(--navy); margin-bottom: 12px; }
+  .card p { color: var(--muted); font-size: 0.97rem; }
+
+  /* RESULTS - warm dark band */
+  .results { background: var(--navy); color: var(--cream); position: relative; overflow: hidden; }
+  .results::before { content: ""; position: absolute; bottom: -140px; right: -100px; width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, rgba(197,107,74,0.3), transparent 65%); }
+  .results .sec-head { position: relative; z-index: 1; }
+  .results .sec-head h2 { color: var(--cream); }
+  .results .sec-head .eyebrow { color: var(--gold); }
+  .results .sec-head .eyebrow::before { background: var(--gold); }
+  .results .sec-head p { color: rgba(251,246,238,0.78); }
+  .results-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; position: relative; z-index: 1; }
+  .res-cell { padding: 4px 0; }
+  .res-cell .num { font-family: var(--display); font-size: 3.4rem; font-weight: 600; color: var(--gold); line-height: 1; margin-bottom: 14px; letter-spacing: -0.015em; }
+  .res-cell .lbl { font-size: 0.95rem; color: rgba(251,246,238,0.82); }
+
+  /* PROCESS */
+  .process { background: var(--cream); }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; counter-reset: step; }
+  .step { padding: 0 26px; position: relative; counter-increment: step; }
+  .step:not(:last-child)::after { content: ""; position: absolute; top: 26px; right: -7px; width: 13px; height: 13px; border-top: 1.5px solid var(--terracotta); border-right: 1.5px solid var(--terracotta); transform: rotate(45deg); }
+  .step .n { width: 54px; height: 54px; border-radius: 50%; border: 1.5px solid var(--terracotta); display: flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 600; color: var(--terracotta); font-size: 1.15rem; margin-bottom: 22px; background: rgba(197,107,74,0.08); }
+  .step .n::before { content: counter(step, decimal-leading-zero); }
+  .step h4 { font-family: var(--display); font-size: 1.2rem; color: var(--navy); margin-bottom: 9px; font-weight: 600; }
+  .step p { color: var(--muted); font-size: 0.95rem; }
+
+  /* DIFFERENCE - quote over photo */
+  .diff { background: var(--cream); }
+  .diff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 66px; align-items: center; }
+  .diff-list { list-style: none; }
+  .diff-list li { padding: 22px 0; border-bottom: 1px solid var(--line); display: flex; gap: 18px; }
+  .diff-list li:last-child { border-bottom: none; }
+  .diff-list .check { color: var(--terracotta); font-weight: 700; font-size: 1.2rem; line-height: 1.3; flex-shrink: 0; }
+  .diff-list h4 { font-family: var(--display); font-size: 1.12rem; color: var(--navy); margin-bottom: 4px; font-weight: 600; }
+  .diff-list p { color: var(--muted); font-size: 0.95rem; }
+  .diff-visual { position: relative; background: var(--navy); border-radius: 24px; padding: 52px 46px; overflow: hidden; box-shadow: 0 36px 70px -40px rgba(22,51,91,0.4); display: flex; align-items: center; min-height: 360px; }
+  .diff-visual::before { content: ""; position: absolute; top: -50px; left: -50px; width: 180px; height: 180px; border: 1.5px solid rgba(197,107,74,0.35); border-radius: 50%; }
+  .diff-visual::after { content: ""; position: absolute; bottom: -80px; right: -60px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(197,107,74,0.28), transparent 70%); }
+  .diff-quote { position: relative; z-index: 1; }
+  .dq-mark { font-family: var(--display); font-size: 4.5rem; color: var(--gold); line-height: 0.5; display: block; margin-bottom: 18px; }
+  .diff-quote .q { font-family: var(--display); font-style: italic; font-weight: 500; font-size: 1.7rem; line-height: 1.38; color: var(--cream); }
+  .diff-quote .who { margin-top: 24px; font-size: 0.86rem; color: var(--gold); letter-spacing: 0.04em; }
+
+  .fees { background: var(--paper); }
+  .fee-table { border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
+  .fee-row { display: grid; grid-template-columns: 1.4fr 1fr 1.5fr; padding: 26px 32px; border-bottom: 1px solid var(--line); align-items: center; }
+  .fee-row:last-child { border-bottom: none; }
+  .fee-row.head { background: var(--navy); color: var(--cream); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .fee-row:not(.head):hover { background: var(--cream); }
+  .fee-row .role { font-family: var(--display); font-size: 1.14rem; color: var(--navy); font-weight: 600; }
+  .fee-row .price { font-weight: 600; color: var(--terracotta); }
+  .fee-row .note { color: var(--muted); font-size: 0.93rem; }
+  .fee-foot { margin-top: 22px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .pill { background: var(--cream); border: 1px solid var(--line); padding: 8px 16px; border-radius: 30px; font-size: 0.85rem; color: var(--navy); font-weight: 600; }
+
+  .vac { background: var(--cream); }
+  .vac-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  .vac-card { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 32px; display: flex; flex-direction: column; gap: 13px; transition: box-shadow .3s, transform .3s; }
+  .vac-card:hover { transform: translateY(-4px); box-shadow: 0 24px 48px -32px rgba(22,51,91,0.32); }
+  .vac-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
+  .vac-card h3 { font-family: var(--display); font-size: 1.3rem; color: var(--navy); font-weight: 600; line-height: 1.2; }
+  .vac-loc { font-size: 0.9rem; color: var(--muted); }
+  .vac-tag { font-size: 0.71rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: var(--terracotta); background: rgba(197,107,74,0.1); padding: 5px 12px; border-radius: 30px; white-space: nowrap; }
+  .vac-meta { display: flex; gap: 18px; font-size: 0.92rem; color: var(--ink); }
+  .vac-meta b { color: var(--navy); }
+  .vac-card p.desc { color: var(--muted); font-size: 0.94rem; }
+  .vac-apply { margin-top: auto; padding-top: 6px; }
+  .vac-apply a { color: var(--terracotta); font-weight: 600; text-decoration: none; font-size: 0.94rem; }
+  .vac-apply a:hover { color: var(--navy); }
+  .vac-foot { text-align: center; margin-top: 36px; }
+  .vac-foot p { color: var(--muted); font-size: 0.96rem; margin-bottom: 14px; }
+
+  .cta { background: var(--navy); color: var(--cream); position: relative; overflow: hidden; }
+  .cta::before { content: ""; position: absolute; top: -120px; left: -90px; width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, rgba(197,107,74,0.26), transparent 65%); }
+  .cta-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 58px; align-items: start; position: relative; z-index: 1; }
+  .cta h2 { font-family: var(--display); font-weight: 500; font-size: clamp(2.1rem, 4vw, 3.1rem); line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 18px; }
+  .cta h2 em { font-style: italic; color: var(--gold); }
+  .cta p.lead { color: rgba(251,246,238,0.82); font-size: 1.06rem; margin-bottom: 28px; max-width: 410px; }
+  .cta-promise { display: flex; align-items: center; gap: 13px; padding: 17px 21px; background: rgba(255,255,255,0.06); border-radius: 14px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 30px; }
+  .cta-promise .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--gold); flex-shrink: 0; box-shadow: 0 0 0 5px rgba(200,162,75,0.18); }
+  .cta-promise span { font-size: 0.94rem; }
+  .cta-details { display: flex; flex-direction: column; gap: 12px; font-size: 0.95rem; }
+  .cta-details a, .cta-details span { color: rgba(251,246,238,0.88); text-decoration: none; }
+  .cta-details a:hover { color: var(--gold); }
+  .cta-details .lab { color: var(--gold); font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 2px; }
+  form { display: grid; gap: 15px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+  .field label { display: block; font-size: 0.81rem; font-weight: 600; margin-bottom: 7px; color: rgba(251,246,238,0.85); }
+  .field input, .field select, .field textarea { width: 100%; padding: 14px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.05); color: var(--cream); font-family: var(--body); font-size: 0.95rem; transition: border-color .2s, background .2s; }
+  .field input::placeholder, .field textarea::placeholder { color: rgba(251,246,238,0.4); }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--gold); background: rgba(255,255,255,0.08); }
+  .field select option { color: var(--ink); }
+  .field textarea { resize: vertical; min-height: 90px; }
+  .file-field { border: 1px dashed rgba(255,255,255,0.28); border-radius: 10px; padding: 15px 16px; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: border-color .2s, background .2s; }
+  .file-field:hover { border-color: var(--gold); background: rgba(255,255,255,0.04); }
+  .file-field input { display: none; }
+  .file-field .fi-ico { color: var(--gold); font-size: 1.1rem; }
+  .file-field .fi-txt { font-size: 0.9rem; color: rgba(251,246,238,0.7); }
+  form button { background: var(--gold); color: var(--navy); border: none; padding: 16px; border-radius: 40px; font-family: var(--body); font-weight: 700; font-size: 0.98rem; cursor: pointer; transition: transform .2s, filter .2s; }
+  form button:hover { transform: translateY(-2px); filter: brightness(1.06); }
+  .form-note { font-size: 0.8rem; color: rgba(251,246,238,0.55); text-align: center; }
+  .form-success { display: none; padding: 18px; background: rgba(200,162,75,0.15); border: 1px solid var(--gold); border-radius: 12px; font-size: 0.96rem; }
+
+  footer { background: var(--paper); padding: 58px 0 34px; border-top: 1px solid var(--line); }
+  .foot-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; flex-wrap: wrap; margin-bottom: 40px; }
+  .foot-brand p { color: var(--muted); font-size: 0.95rem; max-width: 290px; margin-top: 14px; }
+  .foot-social { display: flex; gap: 12px; margin-top: 18px; }
+  .foot-social a { width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--navy); text-decoration: none; font-size: 0.8rem; font-weight: 600; transition: background .2s, color .2s, border-color .2s; }
+  .foot-social a:hover { background: var(--navy); color: var(--cream); border-color: var(--navy); }
+  .foot-cols { display: flex; gap: 56px; flex-wrap: wrap; }
+  .foot-col h5 { font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); margin-bottom: 14px; font-weight: 700; }
+  .foot-col a { display: block; color: var(--muted); text-decoration: none; font-size: 0.92rem; margin-bottom: 9px; transition: color .2s; }
+  .foot-col a:hover { color: var(--terracotta); }
+  .foot-bottom { border-top: 1px solid var(--line); padding-top: 22px; font-size: 0.83rem; color: var(--muted); }
+  .foot-bottom .reg { margin-bottom: 8px; max-width: 760px; line-height: 1.5; }
+  .foot-bottom .row2 { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .foot-bottom .row2 a { color: var(--muted); text-decoration: none; }
+  .foot-bottom .row2 a:hover { color: var(--terracotta); }
+
+  /* 4-card grid */
+  .cards-4 { grid-template-columns: repeat(4, 1fr); }
+
+  /* maths table */
+  .maths-table { border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
+  .maths-row { display: grid; grid-template-columns: 1.2fr 1fr 1fr; align-items: center; border-bottom: 1px solid var(--line); }
+  .maths-row:last-child { border-bottom: none; }
+  .maths-row > div { padding: 22px 28px; }
+  .maths-row.head { background: var(--cream); font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+  .maths-row .ml { font-family: var(--display); font-size: 1.06rem; color: var(--navy); font-weight: 600; }
+  .maths-row > div:nth-child(2) { color: var(--muted); border-left: 1px solid var(--line); }
+  .maths-row .hs { background: var(--navy); color: var(--cream); font-weight: 600; height: 100%; display: flex; align-items: center; }
+  .maths-row.head .hs { background: var(--navy); color: var(--gold); }
+  .maths-line { font-family: var(--display); font-style: italic; font-size: 1.4rem; line-height: 1.4; color: var(--navy); margin: 30px 0 24px; max-width: 720px; }
+
+  /* guarantee */
+  .guarantee { margin-top: 64px; padding-top: 56px; border-top: 1px solid var(--line); }
+  .guarantee h3 { font-family: var(--display); font-size: 1.7rem; color: var(--navy); font-weight: 600; margin-bottom: 10px; }
+  .guarantee > p { color: var(--muted); font-size: 1.04rem; margin-bottom: 28px; max-width: 560px; }
+  .g-table { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; max-width: 720px; }
+  .g-row { display: grid; grid-template-columns: 1fr 1fr 1fr; border-bottom: 1px solid var(--line); }
+  .g-row:last-child { border-bottom: none; }
+  .g-row > div { padding: 16px 24px; font-size: 0.95rem; }
+  .g-row.head { background: var(--navy); color: var(--gold); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; }
+  .g-row .g-val { color: var(--terracotta); font-weight: 700; }
+  .g-row:not(.head) > div:first-child { color: var(--navy); font-weight: 600; }
+
+  /* proof */
+  .proof { background: var(--cream); }
+  .proof-inner { max-width: 820px; }
+  .proof-inner h2 { font-family: var(--display); font-weight: 500; font-size: clamp(2.1rem, 4vw, 3rem); line-height: 1.08; letter-spacing: -0.02em; color: var(--navy); margin: 8px 0 22px; }
+  .proof-inner h2 em { font-style: italic; color: var(--terracotta); }
+  .proof-lead { font-size: 1.18rem; color: var(--muted); line-height: 1.6; margin-bottom: 44px; }
+  .proof-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; border-top: 1px solid var(--line); padding-top: 40px; }
+  .proof-stats > div { display: flex; flex-direction: column; gap: 8px; }
+  .ps-n { font-family: var(--display); font-size: 2.6rem; font-weight: 600; color: var(--terracotta); line-height: 1; }
+  .ps-l { font-size: 0.95rem; color: var(--muted); }
+
+  /* terms request (gated) */
+  .terms-req { background: var(--cream); }
+  .terms-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 60px; align-items: start; }
+  .terms-grid h2 { font-family: var(--display); font-weight: 500; font-size: clamp(1.9rem, 3.6vw, 2.7rem); line-height: 1.1; letter-spacing: -0.02em; color: var(--navy); margin-bottom: 18px; }
+  .tr-lead { color: var(--muted); font-size: 1.08rem; margin-bottom: 26px; }
+  .tr-points { list-style: none; margin-bottom: 26px; }
+  .tr-points li { display: flex; gap: 12px; align-items: flex-start; color: var(--ink); font-size: 0.98rem; padding: 8px 0; }
+  .tr-points .check { color: var(--terracotta); font-weight: 700; flex-shrink: 0; }
+  .tr-note { font-size: 0.9rem; color: var(--muted); font-style: italic; border-left: 2px solid var(--terracotta); padding-left: 16px; }
+  .terms-req form { display: grid; gap: 15px; background: var(--navy); padding: 38px 36px; border-radius: 22px; box-shadow: 0 30px 64px -40px rgba(22,51,91,0.45); }
+  .terms-req .field label { color: rgba(251,246,238,0.85); }
+  .terms-req .field input { width: 100%; padding: 14px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.05); color: var(--cream); font-family: var(--body); font-size: 0.95rem; transition: border-color .2s, background .2s; }
+  .terms-req .field input::placeholder { color: rgba(251,246,238,0.4); }
+  .terms-req .field input:focus { outline: none; border-color: var(--gold); background: rgba(255,255,255,0.08); }
+  .terms-req .err { display: none; font-size: 0.78rem; color: var(--terracotta-soft); margin-top: 6px; }
+  .terms-req .err.show { display: block; }
+  .declare { display: flex; gap: 12px; align-items: flex-start; cursor: pointer; padding: 4px 0; }
+  .declare input { width: 18px; height: 18px; margin-top: 3px; flex-shrink: 0; accent-color: var(--gold); cursor: pointer; }
+  .declare span { font-size: 0.88rem; color: rgba(251,246,238,0.82); line-height: 1.5; }
+  .terms-req button { background: var(--gold); color: var(--navy); border: none; padding: 16px; border-radius: 40px; font-family: var(--body); font-weight: 700; font-size: 0.98rem; cursor: pointer; transition: transform .2s, filter .2s; }
+  .terms-req button:hover { transform: translateY(-2px); filter: brightness(1.06); }
+  .terms-req .form-note { color: rgba(251,246,238,0.55); }
+  .terms-req .form-success { color: var(--cream); }
+
+  /* quote band (testimonial) */
+  .quote-band { background: var(--navy); padding: 90px 0; position: relative; overflow: hidden; }
+  .quote-band::before { content: ""; position: absolute; top: -60px; right: -60px; width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(circle, rgba(197,107,74,0.22), transparent 70%); }
+  .qb-inner { max-width: 820px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+  .qb-mark { font-family: var(--display); font-size: 4.5rem; color: var(--gold); line-height: 0.4; display: block; margin-bottom: 8px; }
+  .qb-text { font-family: var(--display); font-style: italic; font-weight: 500; font-size: clamp(1.4rem, 2.6vw, 1.9rem); line-height: 1.4; color: var(--cream); margin-bottom: 26px; }
+  .qb-who { font-size: 0.92rem; color: var(--gold); letter-spacing: 0.04em; }
+  .qb-pending { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(251,246,238,0.4); margin-top: 14px; }
+
+  /* faq */
+  .faq { background: var(--paper); }
+  .faq-list { max-width: 800px; }
+  .faq details { border-bottom: 1px solid var(--line); }
+  .faq details:first-child { border-top: 1px solid var(--line); }
+  .faq summary { font-family: var(--display); font-size: 1.18rem; font-weight: 600; color: var(--navy); padding: 24px 40px 24px 0; cursor: pointer; list-style: none; position: relative; transition: color .2s; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; position: absolute; right: 4px; top: 50%; transform: translateY(-50%); font-size: 1.6rem; color: var(--terracotta); font-weight: 400; transition: transform .25s; line-height: 1; }
+  .faq details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+  .faq summary:hover { color: var(--terracotta); }
+  .faq details p { color: var(--muted); font-size: 1rem; line-height: 1.65; padding: 0 40px 26px 0; margin: 0; }
+
+  /* candidate roles sub-block */
+  .cand-roles { margin-top: 64px; padding-top: 56px; border-top: 1px solid var(--line); }
+  .cand-roles h3 { font-family: var(--display); font-size: 1.7rem; color: var(--navy); font-weight: 600; margin-bottom: 8px; }
+  .cr-sub { color: var(--muted); font-size: 1.02rem; margin-bottom: 30px; max-width: 600px; }
+  .cand-roles .vac-card:hover { transform: translateY(-4px); box-shadow: 0 24px 48px -32px rgba(22,51,91,0.32); }
+
+  /* alongside internal teams */
+  .alongside { background: var(--paper); }
+  .alongside-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 60px; align-items: start; }
+  .alongside-grid h2 { font-family: var(--display); font-weight: 500; font-size: clamp(1.9rem, 3.6vw, 2.7rem); line-height: 1.12; letter-spacing: -0.02em; color: var(--navy); margin-bottom: 20px; }
+  .al-lead { color: var(--muted); font-size: 1.08rem; line-height: 1.65; }
+  .al-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .al-card { background: var(--cream); border: 1px solid var(--line); border-radius: 16px; padding: 28px 26px; transition: transform .3s, box-shadow .3s; }
+  .al-card:hover { transform: translateY(-4px); box-shadow: 0 22px 46px -32px rgba(22,51,91,0.3); }
+  .al-card h4 { font-family: var(--display); font-size: 1.18rem; color: var(--navy); font-weight: 600; margin-bottom: 9px; }
+  .al-card p { color: var(--muted); font-size: 0.94rem; line-height: 1.6; }
+
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 920px) {
+    .nav-links { display: none; }
+    .menu-btn { display: block; }
+    .hero-grid, .about-grid, .diff-grid, .cta-grid, .terms-grid, .alongside-grid { grid-template-columns: 1fr; gap: 48px; }
+    .al-cards { grid-template-columns: 1fr; }
+    .cards { grid-template-columns: 1fr; }
+    .cards-4 { grid-template-columns: 1fr; }
+    .maths-row { grid-template-columns: 1fr; }
+    .maths-row > div { padding: 14px 20px; }
+    .maths-row > div:nth-child(2) { border-left: none; }
+    .maths-row.head { display: none; }
+    .maths-row .hs { height: auto; }
+    .g-row { grid-template-columns: 1fr; }
+    .g-row.head { display: none; }
+    .g-row > div { padding: 10px 18px; }
+    .proof-stats { grid-template-columns: 1fr; gap: 26px; }
+    .results-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+    .steps { grid-template-columns: 1fr 1fr; gap: 40px 0; }
+    .step:nth-child(2)::after { display: none; }
+    .vac-grid { grid-template-columns: 1fr; }
+    .fee-row { grid-template-columns: 1fr; gap: 6px; padding: 22px; }
+    .fee-row.head { display: none; }
+    .form-row { grid-template-columns: 1fr; }
+    section { padding: 74px 0; }
+    .hero { padding: 124px 0 80px; }
+    .hero-badge { left: 0; }
+  }
+  @media (max-width: 540px) {
+    .results-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .step::after { display: none !important; }
+  }
+</style>
+</head>
+<body>
+<header id="header">
+  <div class="wrap">
+    <nav>
+      <a href="#top" class="logo"><span class="txt">Haydon Specter<b>.</b></span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#results">Results</a>
+        <a href="#fees">The Maths</a>
+        <a href="#alongside">Your Team</a>
+        <a href="#faq">FAQ</a>
+        <a href="#terms">Terms</a>
+        <a href="#candidates">For candidates</a>
+        <a href="#contact" class="nav-cta">Get in Touch</a>
+      </div>
+      <button class="menu-btn" onclick="document.querySelector('.nav-links').style.display='flex';this.style.display='none'">&#9776;</button>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="reveal in">
+        <span class="eyebrow">Permanent care staff. On your payroll, not ours.</span>
+        <h1>Get your care home <em>off agency.</em> For good.</h1>
+        <p class="lead">We place permanent ancillary and care staff who join your payroll and stay in the role, so you can stop paying agency rates month after month. A pre-screened shortlist within 72 hours, backed by a guarantee that means it.</p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn-primary">Brief a Role</a>
+          <a href="#candidates" class="btn-ghost">For candidates</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal in">
+        <div class="hero-panel">
+          <p class="hp-kicker">Retention you count on</p>
+          <div class="hp-stat"><span class="hp-n">93.4%</span><span class="hp-l">still in post at 12 months</span></div>
+          <div class="hp-stat"><span class="hp-n">72hr</span><span class="hp-l">to a pre-screened shortlist</span></div>
+          <div class="hp-stat"><span class="hp-n">&pound;1.8m</span><span class="hp-l">saved across our placements</span></div>
+          <div class="hp-rule"></div>
+          <p class="hp-foot">Send us one role. The first shortlist tells you everything.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="wrap trust-inner">
+    <p>Placing across</p>
+    <div class="trust-items">
+      <span>Kitchen &amp; Catering</span><span>Domestic &amp; Cleaning</span><span>Maintenance</span><span>Activities &amp; Admin</span><span>Care Assistants</span>
+    </div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-body reveal">
+        <span class="eyebrow">About us</span>
+        <h2>The end of agency dependency for <em>care homes.</em></h2>
+      </div>
+      <div class="about-body reveal">
+        <p>Hiring in care is hard. The right people are scarce, the wrong hire is expensive, and agency temps drain your budget month after month with nothing permanent to show for it. We work differently.</p>
+        <p>We focus on permanent ancillary staff, kitchen, domestic, maintenance, activities and admin, with carers placed alongside. They start <strong>on your payroll, not ours.</strong> No retainer, no hourly markup, no ongoing charges. One fixed fee, one good hire, backed by a guarantee.</p>
+        <p>One fixed fee, one good hire, and a guarantee behind it. It starts with one conversation about the roles you need filled.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="approach" id="approach">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>Four steps, one good hire</h2>
+      <p>Simple, fast and built around your home. From first brief to a permanent member of your team, with us checking in long after they start.</p>
+    </div>
+    <div class="cards cards-4">
+      <div class="card reveal"><div class="ico">01</div><h3>You brief us</h3><p>Tell us the role, the home, the rota and the must-haves. One conversation is all it takes to get started.</p></div>
+      <div class="card reveal"><div class="ico">02</div><h3>Shortlist in 72hr</h3><p>Pre-screened, interview-ready candidates within 72 hours. People who actually fit the brief, not a stack of random CVs.</p></div>
+      <div class="card reveal"><div class="ico">03</div><h3>They start</h3><p>You interview, you choose, they start, as a permanent member of your team. Your culture, your way.</p></div>
+      <div class="card reveal"><div class="ico">04</div><h3>We check in</h3><p>Day 1, Week 1, Month 1, Month 3. We stay close to make sure the hire sticks.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="results" id="results">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The numbers</span>
+      <h2>Results that speak for themselves</h2>
+      <p>We would rather show you than tell you. This is what you get when the staffing is handled properly.</p>
+    </div>
+    <div class="results-grid reveal">
+      <div class="res-cell"><div class="num">93.4%</div><div class="lbl">Still in post at 12 months</div></div>
+      <div class="res-cell"><div class="num">72hr</div><div class="lbl">To a pre-screened shortlist</div></div>
+      <div class="res-cell"><div class="num">&pound;1.8m</div><div class="lbl">Saved across our placements</div></div>
+      <div class="res-cell"><div class="num">0</div><div class="lbl">Retainers or ongoing fees</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="diff" id="difference">
+  <div class="wrap">
+    <div class="diff-grid">
+      <div class="reveal">
+        <div class="sec-head" style="margin-bottom:34px">
+          <span class="eyebrow">The difference</span>
+          <h2>Partner, not agency</h2>
+          <p>The label matters because the behaviour is different.</p>
+        </div>
+        <ul class="diff-list">
+          <li><span class="check">&#10003;</span><div><h4>One fixed fee, once</h4><p>No retainer, no hourly markup, no ongoing charges. They join your payroll, not ours.</p></div></li>
+          <li><span class="check">&#10003;</span><div><h4>Shortlist within 72 hours</h4><p>A pre-screened shortlist in front of you within three working days of a full brief.</p></div></li>
+          <li><span class="check">&#10003;</span><div><h4>Built for retention</h4><p>We place people to stay, not temps to churn. Permanent, direct, lasting.</p></div></li>
+          <li><span class="check">&#10003;</span><div><h4>90-day guarantee</h4><p>If a placement does not work out within 90 days, we put it right.</p></div></li>
+        </ul>
+      </div>
+      <div class="diff-visual reveal">
+        <div class="diff-quote">
+          <span class="dq-mark">&ldquo;</span>
+          <p class="q">No fluff, no jargon. Just the right people, in front of you fast, who actually stay.</p>
+          <p class="who">&mdash; The Haydon Specter approach</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fees" id="fees">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The maths</span>
+      <h2>Recruitment that ends with you hiring, not renting.</h2>
+      <p>Not temps. Not hourly. Not a leak in your budget. Agency cover bills you every shift, forever, and you never own the relationship. We charge once, they join your payroll, and they stay.</p>
+    </div>
+    <div class="maths-table reveal">
+      <div class="maths-row head"><div></div><div>Agency temps</div><div class="hs">Haydon Specter</div></div>
+      <div class="maths-row"><div class="ml">Model</div><div>Per hour, per shift, ongoing</div><div class="hs">One-off fixed fee</div></div>
+      <div class="maths-row"><div class="ml">One carer, 12 months</div><div>&pound;37,000 &ndash; &pound;46,000</div><div class="hs">A fraction of that, once</div></div>
+      <div class="maths-row"><div class="ml">On your payroll?</div><div>No</div><div class="hs">Yes</div></div>
+      <div class="maths-row"><div class="ml">Retention</div><div>None</div><div class="hs">90-day guarantee</div></div>
+    </div>
+    <p class="maths-line reveal">&pound;37,000 a year on agency, or one fixed fee with us and they are still in post a year later. That is the whole pitch.</p>
+    <div class="fee-foot reveal">
+      <span class="pill">One-off fixed fee</span>
+      <span class="pill">No retainer</span>
+      <span class="pill">No hourly markup</span>
+      <span class="pill">No ongoing charges</span>
+    </div>
+    <div class="vac-foot reveal" style="text-align:left;margin-top:28px">
+      <a href="#contact" class="btn-primary">Get a Quote</a>
+    </div>
+
+    <div class="guarantee reveal">
+      <h3>Our guarantee</h3>
+      <p>If a placement does not work out within three months, you are covered. Refund or free replacement, your choice.</p>
+      <div class="g-table">
+        <div class="g-row head"><div>If they leave</div><div>You get</div><div>Or</div></div>
+        <div class="g-row"><div>Within 2 weeks</div><div class="g-val">100% refund</div><div>Free replacement</div></div>
+        <div class="g-row"><div>Week 3 &ndash; Month 1</div><div class="g-val">75% refund</div><div>Free replacement</div></div>
+        <div class="g-row"><div>Month 2</div><div class="g-val">50% refund</div><div>Free replacement</div></div>
+        <div class="g-row"><div>Month 3</div><div class="g-val">25% refund</div><div>Free replacement</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="proof" id="proof">
+  <div class="wrap">
+    <div class="proof-inner reveal">
+      <span class="eyebrow">Proof, not promises</span>
+      <h2>From full agency reliance to <em>zero.</em></h2>
+      <p class="proof-lead">Since January 2026, we have fully staffed care homes with zero agency dependency. We took a Shropshire home from full agency reliance to zero agencies in three months. Most recently, four permanent carers placed for a 32-bed home in Hampshire, all still in post.</p>
+      <div class="proof-stats">
+        <div><span class="ps-n">11</span><span class="ps-l">Homes fully staffed</span></div>
+        <div><span class="ps-n">3 mo</span><span class="ps-l">Shropshire home to zero agencies</span></div>
+        <div><span class="ps-n">4 / 4</span><span class="ps-l">Hampshire carers still in post</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alongside" id="alongside">
+  <div class="wrap">
+    <div class="alongside-grid">
+      <div class="reveal">
+        <span class="eyebrow">Already have a recruiter?</span>
+        <h2>We work alongside your internal team, not over the top of it.</h2>
+        <p class="al-lead">Plenty of the homes we work with already have an internal recruitment function. We are not here to replace them. We take the roles that drain their time, the hard-to-fill ancillary and care positions, so your team can focus on the hiring they are best placed to do. And when the next gap opens, because it always does, we are the easy call instead of the agency.</p>
+      </div>
+      <div class="al-cards reveal">
+        <div class="al-card">
+          <h4>We take the overflow</h4>
+          <p>When your team is stretched or a role has sat open too long, we step in and fill it. No long contract, no taking over your function.</p>
+        </div>
+        <div class="al-card">
+          <h4>We cover the gaps</h4>
+          <p>Kitchen, domestic, maintenance and care roles that are tough to source. We focus there so your recruiter can focus on the rest.</p>
+        </div>
+        <div class="al-card">
+          <h4>You stay in control</h4>
+          <p>Your team, your process, your final say. We slot into how you already work and hand everything over clean.</p>
+        </div>
+        <div class="al-card">
+          <h4>Pay only on success</h4>
+          <p>No retainer eating your budget alongside an internal salary. One fixed fee, only when someone good actually starts.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="candidates">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">For candidates</span>
+      <h2>Permanent roles, placed direct.</h2>
+      <p>We place people into permanent care home roles that often never reach the public job boards. No temp churn, no being passed around. Here is how it works.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step"><span class="n"></span><h4>Initial chat</h4><p>A relaxed call to understand what you are after, your experience, and where you want to be.</p></div>
+      <div class="step"><span class="n"></span><h4>CV review</h4><p>We sharpen your CV and present you at your best to the right homes.</p></div>
+      <div class="step"><span class="n"></span><h4>Introductions</h4><p>We put you in front of the right homes and prep you properly for every interview.</p></div>
+      <div class="step"><span class="n"></span><h4>You start</h4><p>Contracts sorted, onboarding handled, and we stay in touch once you are in post.</p></div>
+    </div>
+
+    <div class="cand-roles reveal">
+      <h3>Roles we are working right now</h3>
+      <p class="cr-sub">A snapshot of current openings. Many roles never reach the public boards, so get in touch even if you do not see your fit.</p>
+      <div class="vac-grid">
+        <div class="vac-card"><div class="vac-top"><div><h3>Head Chef</h3><div class="vac-loc">Hertfordshire</div></div><span class="vac-tag">Permanent</span></div><div class="vac-meta"><span><b>&pound;40 &ndash; 42k</b></span><span>Full time</span></div><p class="desc">Lead the kitchen at a well regarded care home. Care catering experience preferred.</p><div class="vac-apply"><a href="#contact">Apply or enquire &rarr;</a></div></div>
+        <div class="vac-card"><div class="vac-top"><div><h3>Split-Site Chef</h3><div class="vac-loc">Buckinghamshire</div></div><span class="vac-tag">Permanent</span></div><div class="vac-meta"><span><b>Competitive</b></span><span>Two sites</span></div><p class="desc">Cover two nearby homes. IDDSI knowledge a strong advantage.</p><div class="vac-apply"><a href="#contact">Apply or enquire &rarr;</a></div></div>
+        <div class="vac-card"><div class="vac-top"><div><h3>Sous Chef</h3><div class="vac-loc">East Sussex</div></div><span class="vac-tag">Thu &ndash; Sun</span></div><div class="vac-meta"><span><b>Competitive</b></span><span>4 day week</span></div><p class="desc">Weekend-weighted kitchen role. Strong work-life balance.</p><div class="vac-apply"><a href="#contact">Apply or enquire &rarr;</a></div></div>
+        <div class="vac-card"><div class="vac-top"><div><h3>Cook</h3><div class="vac-loc">Shropshire</div></div><span class="vac-tag">Permanent</span></div><div class="vac-meta"><span><b>&pound;14.25/hr</b></span><span>Fortnightly rota</span></div><p class="desc">Care home cook role. Fortnightly rota with alternating Sundays.</p><div class="vac-apply"><a href="#contact">Apply or enquire &rarr;</a></div></div>
+        <div class="vac-card"><div class="vac-top"><div><h3>Live-In Carer</h3><div class="vac-loc">Surrey</div></div><span class="vac-tag">Live-in</span></div><div class="vac-meta"><span><b>Competitive</b></span><span>Private client</span></div><p class="desc">Live-in care for a private client. Experience and warmth essential.</p><div class="vac-apply"><a href="#contact">Apply or enquire &rarr;</a></div></div>
+        <div class="vac-card"><div class="vac-top"><div><h3>Care Assistant</h3><div class="vac-loc">Surrey</div></div><span class="vac-tag">Permanent</span></div><div class="vac-meta"><span><b>Competitive</b></span><span>Community</span></div><p class="desc">Community care role supporting clients in their own homes.</p><div class="vac-apply"><a href="#contact">Apply or enquire &rarr;</a></div></div>
+      </div>
+    </div>
+
+    <div class="vac-foot reveal">
+      <a href="#contact" class="btn-primary">Send Your CV</a>
+      <a href="https://uk.indeed.com/cmp/Haydon-Specter/jobs" target="_blank" rel="noopener" class="btn-ghost" style="margin-left:12px">View Jobs on Indeed</a>
+    </div>
+  </div>
+</section>
+
+<section class="quote-band">
+  <div class="wrap">
+    <div class="qb-inner reveal">
+      <span class="qb-mark">&ldquo;</span>
+      <p class="qb-text">Placeholder for a real client quote. Something like: we went from full agency spend to zero in three months, and every carer they placed is still with us.</p>
+      <p class="qb-who">Registered Manager, care home client</p>
+      <p class="qb-pending">Real testimonial to be added</p>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Straight answers</span>
+      <h2>The questions we get asked</h2>
+      <p>No runaround. Here is what providers usually want to know before they pick up the phone.</p>
+    </div>
+    <div class="faq-list reveal">
+      <details>
+        <summary>What does it cost?</summary>
+        <p>A one-off fixed fee per placement, agreed up front and based on the role. No retainer, no hourly markup, no ongoing charges. Tell us the role and we will give you the number straight, request our Terms above for the full breakdown.</p>
+      </details>
+      <details>
+        <summary>How long is the guarantee?</summary>
+        <p>Three months. If a placement leaves within that window, you get a refund or a free replacement, your choice. The refund tapers from 100% in the first two weeks down to 25% in month three, and a free replacement is available at any stage.</p>
+      </details>
+      <details>
+        <summary>When is the fee payable?</summary>
+        <p>We invoice on the candidate's start date, payable within 30 days. Nothing is due before someone actually starts with you, and the guarantee applies once the invoice is settled.</p>
+      </details>
+      <details>
+        <summary>Who handles right-to-work and compliance checks?</summary>
+        <p>We carry out initial identity and qualification screening as part of sourcing. Full right-to-work verification, DBS, references and any CQC fit-and-proper checks remain with you as the employer, since the candidate joins your payroll. We hand over everything we have to make that straightforward.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="terms-req" id="terms">
+  <div class="wrap">
+    <div class="terms-grid">
+      <div class="reveal">
+        <span class="eyebrow">For care providers</span>
+        <h2>Request our Terms of Business</h2>
+        <p class="tr-lead">Ready to see exactly how we work? Tell us a little about your home and we will send our full Terms across. We review every request, so this goes to a real person, not an inbox.</p>
+        <ul class="tr-points">
+          <li><span class="check">&#10003;</span> Fixed one-off fees, no retainers or ongoing charges</li>
+          <li><span class="check">&#10003;</span> Full 90-day tiered guarantee in writing</li>
+          <li><span class="check">&#10003;</span> Plain English, no jargon, nothing hidden</li>
+        </ul>
+        <p class="tr-note">We share Terms with care providers only. Recruitment agencies and third parties, this one is not for you.</p>
+      </div>
+      <div class="reveal">
+        <form id="termsForm">
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+          <input type="hidden" name="subject" value="New Terms request — Haydon Specter">
+          <input type="hidden" name="from_name" value="Haydon Specter website">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+          <div class="form-row">
+            <div class="field"><label>Your name</label><input type="text" name="tname" placeholder="Full name" required></div>
+            <div class="field"><label>Role</label><input type="text" name="trole" placeholder="e.g. Registered Manager" required></div>
+          </div>
+          <div class="field"><label>Care home / company name</label><input type="text" name="tcompany" placeholder="Registered company name" required></div>
+          <div class="form-row">
+            <div class="field"><label>Work email</label><input type="email" name="temail" id="temail" placeholder="you@yourhome.co.uk" required><span class="err" id="emailErr">Please use your work email, not a personal address.</span></div>
+            <div class="field"><label>CQC provider ID</label><input type="text" name="tcqc" placeholder="e.g. 1-234567890" required></div>
+          </div>
+          <div class="field"><label>Roughly how many beds / clients?</label><input type="text" name="tbeds" placeholder="e.g. 32-bed home" required></div>
+          <label class="declare"><input type="checkbox" name="tdeclare" id="tdeclare" required><span>I confirm I represent a care provider (not a recruitment agency or third party) and am enquiring about staffing my own service.</span></label>
+          <button type="submit">Request Terms</button>
+          <p class="form-note">We review every request and send Terms within one working day. We do not share your details.</p>
+        </form>
+        <div class="form-success" id="termsSuccess">Thanks, that is with us. We will review it and send our Terms across within one working day.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <div class="cta-grid">
+      <div class="reveal">
+        <h2>Send us <em>one role.</em></h2>
+        <p class="lead">If the shortlist we put in front of you is not better than anything you have seen, we never speak again. We only take on homes we know we can sort out, so we are not here to talk you into anything. One role tells you everything.</p>
+        <div class="cta-promise"><span class="dot"></span><span>Every enquiry answered within 24 hours. That is the promise.</span></div>
+        <div class="cta-details">
+          <div><div class="lab">Email</div><a href="mailto:info@haydonspecter.com">info@haydonspecter.com</a></div>
+          <div><div class="lab">Phone</div><a href="tel:+447426986788">+44 7426 986788</a></div>
+          <div><div class="lab">Office</div><span>124 City Road, London, EC1V 2NX</span></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <form id="briefForm">
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+          <input type="hidden" name="subject" value="New enquiry — Haydon Specter">
+          <input type="hidden" name="from_name" value="Haydon Specter website">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+          <div class="form-row">
+            <div class="field"><label>Name</label><input type="text" name="name" placeholder="Your name" required></div>
+            <div class="field"><label>Email</label><input type="email" name="email" placeholder="you@example.com" required></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label>Phone</label><input type="tel" name="phone" placeholder="Optional"></div>
+            <div class="field"><label>I am a</label>
+              <select name="type" onchange="document.getElementById('cvWrap').style.display = this.value==='candidate' ? 'block':'none'">
+                <option value="provider">Care provider hiring</option>
+                <option value="candidate">Candidate looking for work</option>
+              </select>
+            </div>
+          </div>
+          <div class="field"><label>Message</label><textarea name="message" placeholder="Role, location, rota, salary, or what you are looking for..." required></textarea></div>
+          <div class="field" id="cvWrap" style="display:none">
+            <label>Attach your CV (optional)</label>
+            <label class="file-field">
+              <span class="fi-ico">&uarr;</span>
+              <span class="fi-txt" id="fileTxt">Upload CV or resume (PDF, DOC)</span>
+              <input type="file" name="cv" accept=".pdf,.doc,.docx" onchange="document.getElementById('fileTxt').textContent = this.files[0] ? this.files[0].name : 'Upload CV or resume (PDF, DOC)'">
+            </label>
+          </div>
+          <button type="submit">Send it over</button>
+          <p class="form-note">By submitting you agree to our Privacy Policy and Terms. We respond within 24 hours.</p>
+        </form>
+        <div class="form-success" id="successMsg">Thanks, that is in. We will be back to you within 24 hours.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#top" class="logo"><span class="txt">Haydon Specter<b>.</b></span></a>
+        <p>Permanent ancillary and care staff for care homes. One fixed fee, on your payroll, backed by a guarantee.</p>
+        <div class="foot-social">
+          <a href="https://www.linkedin.com/company/haydonspecter" target="_blank" rel="noopener" title="LinkedIn">in</a>
+          <a href="https://www.facebook.com/haydonspecter" target="_blank" rel="noopener" title="Facebook">f</a>
+          <a href="https://www.instagram.com/haydonspecter" target="_blank" rel="noopener" title="Instagram">ig</a>
+          <a href="https://x.com/haydonspecter" target="_blank" rel="noopener" title="X">x</a>
+        </div>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col"><h5>Company</h5><a href="#about">About</a><a href="#approach">How It Works</a><a href="#results">Results</a><a href="#fees">The Maths</a></div>
+        <div class="foot-col"><h5>Applicants</h5><a href="#candidates">The Process</a><a href="#candidates">Live Roles</a><a href="#contact">Send Your CV</a><a href="https://uk.indeed.com/cmp/Haydon-Specter/jobs" target="_blank" rel="noopener">Find a Job</a></div>
+        <div class="foot-col"><h5>Get in Touch</h5><a href="mailto:info@haydonspecter.com">info@haydonspecter.com</a><a href="tel:+447426986788">+44 7426 986788</a><a href="#contact">Brief a Role</a></div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p class="reg">Haydon Specter is a limited liability company registered in England and Wales, registered number 12546351. Registered office: 124 City Road, London, EC1V 2NX.</p>
+      <div class="row2">
+        <span>&copy; 2026 Haydon Specter Ltd. All rights reserved.</span>
+        <span><a href="#">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="#">Terms &amp; Conditions</a></span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 20));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // Shared: POST a form to Web3Forms, then reveal its success message
+  function sendForm(form, successEl, btn){
+    var original = btn ? btn.textContent : '';
+    if (btn){ btn.disabled = true; btn.textContent = 'Sending...'; }
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: new FormData(form)
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if (data.success){
+        form.style.display = 'none';
+        successEl.style.display = 'block';
+      } else {
+        if (btn){ btn.disabled = false; btn.textContent = original; }
+        alert('Sorry, something went wrong sending that. Please email info@haydonspecter.com and we will pick it up.');
+      }
+    })
+    .catch(function(){
+      if (btn){ btn.disabled = false; btn.textContent = original; }
+      alert('Sorry, something went wrong sending that. Please email info@haydonspecter.com and we will pick it up.');
+    });
+  }
+
+  document.getElementById('briefForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    sendForm(this, document.getElementById('successMsg'), this.querySelector('button[type="submit"]'));
+  });
+
+  // Gated Terms request: screen out free/personal email domains before sending
+  var freeDomains = ['gmail','yahoo','hotmail','outlook','live','icloud','aol','protonmail','proton','gmx','yandex','msn','mail'];
+  document.getElementById('termsForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var emailEl = document.getElementById('temail');
+    var err = document.getElementById('emailErr');
+    var domain = (emailEl.value || '').toLowerCase().split('@')[1] || '';
+    var provider = domain.split('.')[0];
+    if (freeDomains.indexOf(provider) > -1) { err.classList.add('show'); emailEl.focus(); return; }
+    err.classList.remove('show');
+    sendForm(this, document.getElementById('termsSuccess'), this.querySelector('button[type="submit"]'));
+  });
+</script>
+</body>
+</html>
