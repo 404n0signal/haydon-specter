@@ -110,6 +110,9 @@ module.exports = async function handler(req, res) {
       return res.status(400).json({ success: false, message: 'CV too large (3MB max)' });
     }
     email.attachments = [{ filename, content: body.cv.content }];
+    const cvRow = `<tr><td style="padding:11px 16px 11px 0;color:#6B6358;font-size:12px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;vertical-align:top;white-space:nowrap;border-bottom:1px solid #E9DECF;">CV</td>` +
+      `<td style="padding:11px 0;color:#2A2622;border-bottom:1px solid #E9DECF;">&#128206; Attached &mdash; ${esc(filename)}</td></tr>`;
+    email.html = renderEmail(kind, rows + '\n' + cvRow, enquirerName);
   }
 
   const r = await fetch('https://api.resend.com/emails', {
