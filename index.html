@@ -342,9 +342,10 @@
     .cards-4 { grid-template-columns: 1fr; }
     .maths-row { grid-template-columns: 1fr 1fr; }
     .maths-row > div { padding: 14px 20px; min-width: 0; overflow-wrap: anywhere; }
-    .maths-row > div:nth-child(2) { border-left: none; }
-    .maths-row.head { display: none; }
-    .maths-row .ml { grid-column: 1 / -1; padding-bottom: 6px; }
+    .maths-row > div:nth-child(2) { border-left: none; background: rgba(22,51,91,0.05); }
+    .maths-row.head { display: grid; }
+    .maths-row.head > div:first-child { display: none; }
+    .maths-row .ml { grid-column: 1 / -1; padding-bottom: 4px; }
     .maths-row .hs { height: auto; display: block; }
     .g-row { grid-template-columns: 1fr; }
     .g-row.head { display: none; }
@@ -356,8 +357,7 @@
     .vac-grid { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
     .field input, .field select, .field textarea, .terms-req .field input { font-size: 1rem; }
-    .maths-row > div[data-label]::before, .g-row > div[data-label]::before { content: attr(data-label); display: block; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; color: var(--muted); margin-bottom: 3px; }
-    .maths-row .hs[data-label]::before { color: var(--gold); }
+    .g-row > div[data-label]::before { content: attr(data-label); display: block; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; color: var(--muted); margin-bottom: 3px; }
     section { padding: 74px 0; }
     .hero { padding: 124px 0 80px; }
   }
