@@ -340,11 +340,12 @@
     .al-cards { grid-template-columns: 1fr; }
     .cards { grid-template-columns: 1fr; }
     .cards-4 { grid-template-columns: 1fr; }
-    .maths-row { grid-template-columns: 1fr; }
-    .maths-row > div { padding: 14px 20px; }
+    .maths-row { grid-template-columns: 1fr 1fr; }
+    .maths-row > div { padding: 14px 20px; min-width: 0; overflow-wrap: anywhere; }
     .maths-row > div:nth-child(2) { border-left: none; }
     .maths-row.head { display: none; }
-    .maths-row .hs { height: auto; }
+    .maths-row .ml { grid-column: 1 / -1; padding-bottom: 6px; }
+    .maths-row .hs { height: auto; display: block; }
     .g-row { grid-template-columns: 1fr; }
     .g-row.head { display: none; }
     .g-row > div { padding: 10px 18px; }
